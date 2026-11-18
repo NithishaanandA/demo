@@ -1,12 +1,981 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astah Boutique</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Astah Boutique Tiruppur (@astah_boutique_tirupur) — 15 Years of Trusted Craftsmanship in Tiruppur, Tamil Nadu. Custom bridal blouses, hand Aari embroidery, pure silk sarees, and designer lehengas.">
+  <title>Astah Boutique Tiruppur (@astah_boutique_tirupur) | 15 Years in Tiruppur</title>
+  
+  <!-- Premium, readable Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Astah Boutique</h1>
-    <p>Website Demo</p>
+<body class="luxury-theme">
+
+  <!-- Desktop Ambient Cursor Follower -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Background Ambient Glow Orbs -->
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+  <div class="ambient-glow orb-3"></div>
+
+  <!-- 1. FLOATING COMPACT HEADER NAVBAR -->
+  <header class="island-nav-wrapper">
+    <nav class="island-nav" id="islandNav">
+      <!-- Clean Brand Logo Only (Compact & Sleek) -->
+      <a href="#home" class="brand-monogram" aria-label="Astah Boutique Home">
+        <img src="assets/astah-logo.png" alt="Astah Boutique Tiruppur" class="brand-logo-only">
+      </a>
+
+      <!-- Desktop Navigation Menu (Clear & Familiar Words) -->
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">Our Story</a></li>
+        <li><a href="#reels" class="nav-link">Trending Reels</a></li>
+        <li><a href="#collections" class="nav-link">Shop Dresses</a></li>
+        <li><a href="#tailoring" class="nav-link">Custom Stitching</a></li>
+        <li><a href="#contact" class="nav-link">Visit Shop</a></li>
+      </ul>
+
+      <!-- Right Action Cluster (Streamlined & Small) -->
+      <div class="nav-actions">
+        <!-- Currency Selector (INR default) -->
+        <div class="currency-selector">
+          <select id="currencySelect" aria-label="Select Currency">
+            <option value="INR" selected>INR (₹)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button class="nav-icon-btn" id="wishlistTrigger" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-dot" id="wishlistCount">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="cart-pill-btn magnetic" id="cartTrigger" aria-label="Open Shopping Cart">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-label">CART</span>
+          <span class="cart-badge-count" id="cartCount">0</span>
+        </button>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Open Mobile Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Slide-In Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="assets/astah-logo.png" alt="Astah Logo" style="height: 38px; width: auto;">
+          <div>
+            <span class="logo-text" style="font-size: 1.15rem;">ASTAH BOUTIQUE</span>
+            <p style="font-size: 0.72rem; color: var(--accent-gold); margin-top: 2px;">Tiruppur • Estd. 2011</p>
+          </div>
+        </div>
+        <button class="close-btn" id="closeMobileMenu" aria-label="Close menu">&times;</button>
+      </div>
+      
+      <!-- Mobile Instagram Banner -->
+      <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="mobile-insta-card">
+        <div class="insta-gradient-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </div>
+        <div>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #FFF; display: block;">@astah_boutique_tirupur</span>
+          <span style="font-size: 0.72rem; color: var(--text-secondary);">Follow us on Instagram</span>
+        </div>
+      </a>
+
+      <ul class="mobile-nav-links">
+        <li><a href="#home" class="mobile-link">Home</a></li>
+        <li><a href="#about" class="mobile-link">Our 15-Year Story</a></li>
+        <li><a href="#reels" class="mobile-link">Trending Instagram Reels</a></li>
+        <li><a href="#collections" class="mobile-link">Shop Dresses & Sarees</a></li>
+        <li><a href="#tailoring" class="mobile-link">Custom Stitching & Tailoring</a></li>
+        <li><a href="#contact" class="mobile-link">Visit Shop in Tiruppur</a></li>
+      </ul>
+
+      <!-- Quick Mobile WhatsApp Button -->
+      <div style="margin-top: 1.2rem;">
+        <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20saw%20your%20Instagram%20profile%20and%20would%20like%20to%20enquire%20about%20stitching." target="_blank" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Chat on WhatsApp (+91 90920 91676)</span>
+        </a>
+      </div>
+
+      <div class="mobile-menu-footer">
+        <p class="tagline">📍 Dharapuram Main Road, Tiruppur</p>
+        <p class="contact-info">📞 +91 90920 91676 • Open 10 AM – 9 PM</p>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- 2. HOME HERO SECTION -->
+    <section class="hero-section" id="home">
+      <div class="hero-container">
+        <!-- 15 Years & Instagram Badge Row -->
+        <div class="hero-badge-row">
+          <div class="hero-badge">
+            <span class="status-indicator"></span>
+            <span class="badge-text">ESTD. 2011 • 15 YEARS IN TIRUPPUR</span>
+          </div>
+          <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="hero-insta-pill" aria-label="Follow Astah Boutique on Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>@astah_boutique_tirupur</span>
+          </a>
+        </div>
+
+        <!-- Big Clear Headline -->
+        <h1 class="hero-title">
+          Tiruppur's Favorite <br>
+          <span class="italic-serif glow-text">Bridal & Designer Studio</span>
+        </h1>
+
+        <!-- Story Paragraph -->
+        <p class="hero-desc">
+          Welcome to <strong>Astah Boutique</strong>. For 15 years on Dharapuram Road in Tiruppur, Tamil Nadu, we have been crafting custom bridal blouses with authentic hand Aari embroidery, pure silk sarees, and designer lehengas for over 10,000 brides across India and abroad.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="hero-cta-group">
+          <a href="#collections" class="btn btn-primary magnetic" data-strength="20">
+            <span>SHOP COLLECTIONS</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20would%20like%20to%20send%20a%20design%20photo%20for%20stitching." target="_blank" class="btn btn-whatsapp magnetic" data-strength="15">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>SEND DESIGN PHOTO (+91 90920 91676)</span>
+          </a>
+        </div>
+
+        <!-- Real Trust Badges -->
+        <div class="hero-proof-bar">
+          <div class="proof-item">
+            <span class="proof-number">15+</span>
+            <span class="proof-label">Years in Tiruppur</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number">10,000+</span>
+            <span class="proof-label">Happy Brides Stitched</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number">100%</span>
+            <span class="proof-label">Custom Fit Guarantee</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card with Real Bridal Blouse & Saree -->
+      <div class="hero-visual-card">
+        <div class="hero-image-wrap">
+          <img src="assets/images/collections/bridal-couture.jpg" alt="Astah Boutique Bridal Outfit Tiruppur" class="hero-img">
+          <div class="hero-gradient-overlay"></div>
+        </div>
+        <div class="hero-floating-tag">
+          <div>
+            <span class="tag-title">Royal Bridal Lehenga Set</span>
+            <p style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">Hand-embroidered Aari & Zardozi Work</p>
+          </div>
+          <span class="tag-price">₹14,500</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INFINITE MARQUEE TICKER -->
+    <section class="marquee-strip">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>ASTAH BOUTIQUE TIRUPPUR</span>
+          <span class="star">✦</span>
+          <span>INSTAGRAM @ASTAH_BOUTIQUE_TIRUPUR</span>
+          <span class="star">✦</span>
+          <span>WHATSAPP ORDERS: +91 90920 91676</span>
+          <span class="star">✦</span>
+          <span>15 YEARS OF MASTER TAILORING</span>
+          <span class="star">✦</span>
+          <span>HAND AARI & MAGGAM NEEDLEWORK</span>
+          <span class="star">✦</span>
+          <span>DHARAPURAM MAIN ROAD, TIRUPPUR</span>
+          <span class="star">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>ASTAH BOUTIQUE TIRUPPUR</span>
+          <span class="star">✦</span>
+          <span>INSTAGRAM @ASTAH_BOUTIQUE_TIRUPUR</span>
+          <span class="star">✦</span>
+          <span>WHATSAPP ORDERS: +91 90920 91676</span>
+          <span class="star">✦</span>
+          <span>15 YEARS OF MASTER TAILORING</span>
+          <span class="star">✦</span>
+          <span>HAND AARI & MAGGAM NEEDLEWORK</span>
+          <span class="star">✦</span>
+          <span>DHARAPURAM MAIN ROAD, TIRUPPUR</span>
+          <span class="star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ABOUT US SECTION (THE 15-YEAR STORY OF ASTAH BOUTIQUE) -->
+    <section class="about-section" id="about">
+      <div class="section-header">
+        <span class="eyebrow">OUR 15-YEAR HERITAGE</span>
+        <h2 class="section-title">Born in Tiruppur, Loved Worldwide</h2>
+        <p class="section-desc">
+          Founded in 2011 on Dharapuram Road, Tiruppur, Tamil Nadu — India's famous textile city — Astah Boutique was started with one simple mission: to give every woman custom-made clothes that fit her body like a dream.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card tilt-card" data-tilt>
+          <div class="card-glare"></div>
+          <div class="about-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="6" cy="6" r="3"></circle>
+              <circle cx="6" cy="18" r="3"></circle>
+              <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+              <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+              <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <h3>15 Years of Master Tailoring</h3>
+          <p>
+            With 15 continuous years of tailoring experience in Tiruppur, our master cutting masters know every body type and ensure zero loose shoulders, no wrinkles, and a comfortable, flattering fit.
+          </p>
+        </div>
+
+        <div class="about-card tilt-card" data-tilt>
+          <div class="card-glare"></div>
+          <div class="about-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>Authentic Hand Aari & Maggam Work</h3>
+          <p>
+            We do not use cheap machine prints. Our in-house artisans sit at traditional wooden Maggam frames to handcraft gold zari, pearls, cut-beads, and stones into your bridal blouses.
+          </p>
+        </div>
+
+        <div class="about-card tilt-card" data-tilt>
+          <div class="card-glare"></div>
+          <div class="about-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Online Orders & Global Delivery</h3>
+          <p>
+            Can't visit our Tiruppur shop in person? We take your measurements over WhatsApp video calls and courier safely across India, USA, UK, Singapore, Malaysia, and the Middle East.
+          </p>
+        </div>
+      </div>
+
+      <!-- Workshop Photos Bento -->
+      <div class="bento-grid" style="margin-top: 2rem;">
+        <div class="bento-card bento-wide tilt-card" data-tilt>
+          <div class="card-glare"></div>
+          <div class="bento-image-bg">
+            <img src="assets/images/boutique/atelier-craftsmanship.jpg" alt="Master Tailor at Astah Boutique Tiruppur">
+            <div class="bento-gradient"></div>
+          </div>
+          <div class="bento-card-body">
+            <div class="bento-pill">IN-HOUSE WORKSHOP</div>
+            <h3 class="bento-card-title">Where 15 Years of Craft Lives</h3>
+            <p class="bento-card-text">
+              Every garment is cut and stitched directly in our Dharapuram Road workshop under the personal supervision of our senior master tailor.
+            </p>
+          </div>
+        </div>
+
+        <div class="bento-card bento-drop-card tilt-card" data-tilt>
+          <div class="card-glare"></div>
+          <div class="drop-badge">
+            <span class="pulsing-amber-dot"></span>
+            <span>WEDDING SEASON SPECIAL</span>
+          </div>
+          <h3 class="bento-drop-title">Wedding Stitching Slots</h3>
+          <p class="drop-sub">Bridal orders for this month are filling fast. Book your appointment early!</p>
+          
+          <div class="countdown-timer">
+            <div class="time-block">
+              <span class="time-val" id="countdownHours">06</span>
+              <span class="time-label">HOURS</span>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-block">
+              <span class="time-val" id="countdownMins">30</span>
+              <span class="time-label">MINS</span>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-block">
+              <span class="time-val" id="countdownSecs">45</span>
+              <span class="time-label">SECS</span>
+            </div>
+          </div>
+
+          <div class="drop-progress-wrap">
+            <div class="drop-progress-bar">
+              <div class="drop-progress-fill" style="width: 88%;"></div>
+            </div>
+            <span class="drop-progress-text">88% of bridal stitching dates reserved</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. NEW: TRENDING INSTAGRAM REELS SHOWCASE SECTION -->
+    <section class="reels-section" id="reels">
+      <div class="section-header">
+        <div class="reels-insta-header">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span class="eyebrow" style="margin: 0;">AS SEEN ON INSTAGRAM @ASTAH_BOUTIQUE_TIRUPUR</span>
+        </div>
+        <h2 class="section-title">Trending Bridal Reels & Lookbooks</h2>
+        <p class="section-desc">
+          Browse our most loved Instagram Reels. See how our bridal blouses, lehengas, and silk sarees look in real life. 
+          Tap any reel to order the same design on WhatsApp!
+        </p>
+      </div>
+
+      <!-- Reels Grid (9:16 Vertical Video Cards) -->
+      <div class="reels-grid">
+        <!-- Reel 1 -->
+        <div class="reel-card" data-reel-title="Bridal Aari Handwork Blouse in Maroon">
+          <div class="reel-thumbnail-wrap">
+            <img src="assets/images/collections/aari-work-blouse.jpg" alt="Aari Work Blouse Reel" class="reel-img">
+            <div class="reel-overlay"></div>
+            
+            <div class="reel-top-bar">
+              <span class="reel-badge">🔥 142K VIEWS</span>
+              <span class="reel-audio-pill">
+                <span class="audio-dot"></span> Astah Original Audio
+              </span>
+            </div>
+
+            <div class="reel-play-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+
+            <div class="reel-bottom-info">
+              <h4>Maroon Bridal Blouse Hand Aari Reveal</h4>
+              <p>72 hours of intricate cut-bead and zari stitching.</p>
+              
+              <div class="reel-actions-row">
+                <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20saw%20your%20Instagram%20Reel%20for%20Maroon%20Bridal%20Aari%20Blouse%20and%20want%20to%20order%20it." target="_blank" class="reel-order-btn">
+                  <span>ORDER ON WHATSAPP</span>
+                </a>
+                <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="reel-view-btn" aria-label="Open on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 2 -->
+        <div class="reel-card" data-reel-title="Pure Kanjeevaram Silk Saree Draping">
+          <div class="reel-thumbnail-wrap">
+            <img src="assets/images/collections/kanjeevaram-bridal.jpg" alt="Kanjeevaram Saree Reel" class="reel-img">
+            <div class="reel-overlay"></div>
+            
+            <div class="reel-top-bar">
+              <span class="reel-badge">❤️ 98K VIEWS</span>
+              <span class="reel-audio-pill">
+                <span class="audio-dot"></span> Temple Wedding Bells
+              </span>
+            </div>
+
+            <div class="reel-play-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+
+            <div class="reel-bottom-info">
+              <h4>Kanjeevaram Silk Saree & Contrast Blouse</h4>
+              <p>Pure handloom zari with custom sleeve embroidery.</p>
+              
+              <div class="reel-actions-row">
+                <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20saw%20your%20Instagram%20Reel%20for%20Kanjeevaram%20Silk%20Saree%20and%20want%20to%20order." target="_blank" class="reel-order-btn">
+                  <span>ORDER ON WHATSAPP</span>
+                </a>
+                <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="reel-view-btn" aria-label="Open on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 3 -->
+        <div class="reel-card" data-reel-title="Velvet Bridal Lehenga 8-Meter Flare Check">
+          <div class="reel-thumbnail-wrap">
+            <img src="assets/images/collections/bridal-couture.jpg" alt="Bridal Lehenga Reel" class="reel-img">
+            <div class="reel-overlay"></div>
+            
+            <div class="reel-top-bar">
+              <span class="reel-badge">✨ 185K VIEWS</span>
+              <span class="reel-audio-pill">
+                <span class="audio-dot"></span> Royal Shehnai Tone
+              </span>
+            </div>
+
+            <div class="reel-play-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+
+            <div class="reel-bottom-info">
+              <h4>8-Meter Flare Velvet Lehenga Check</h4>
+              <p>Cancan flare and heavy zardozi hand stitching.</p>
+              
+              <div class="reel-actions-row">
+                <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20saw%20your%20Instagram%20Reel%20for%20Velvet%20Bridal%20Lehenga%20and%20want%20to%20order." target="_blank" class="reel-order-btn">
+                  <span>ORDER ON WHATSAPP</span>
+                </a>
+                <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="reel-view-btn" aria-label="Open on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 4 -->
+        <div class="reel-card" data-reel-title="Live Maggam Wooden Frame Needlework">
+          <div class="reel-thumbnail-wrap">
+            <img src="assets/images/boutique/maggam-frame-atelier.jpg" alt="Maggam Work In Progress Reel" class="reel-img">
+            <div class="reel-overlay"></div>
+            
+            <div class="reel-top-bar">
+              <span class="reel-badge">🧵 BEHIND THE SCENES</span>
+              <span class="reel-audio-pill">
+                <span class="audio-dot"></span> Tiruppur Studio Sounds
+              </span>
+            </div>
+
+            <div class="reel-play-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+
+            <div class="reel-bottom-info">
+              <h4>Behind The Scenes: Maggam Needlework</h4>
+              <p>Handcrafting beads and pearls at our Tiruppur studio.</p>
+              
+              <div class="reel-actions-row">
+                <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20want%20to%20order%20custom%20maggam%20work%20blouse." target="_blank" class="reel-order-btn">
+                  <span>ORDER ON WHATSAPP</span>
+                </a>
+                <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="reel-view-btn" aria-label="Open on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram Call to Action Banner -->
+      <div class="insta-follow-banner">
+        <div class="insta-follow-text">
+          <h3>Want to see more fresh designs daily?</h3>
+          <p>Follow <strong>@astah_boutique_tirupur</strong> on Instagram for daily blouse updates, customer feedback videos, and festival offers!</p>
+        </div>
+        <a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" class="btn btn-primary magnetic">
+          <span>FOLLOW @ASTAH_BOUTIQUE_TIRUPUR</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 6. COLLECTIONS SECTION (CLEAN SHOPPING EXPERIENCE) -->
+    <section class="catalog-section" id="collections">
+      <div class="section-header">
+        <span class="eyebrow">OUR BESTSELLERS</span>
+        <h2 class="section-title">Shop Dresses, Blouses & Sarees</h2>
+        <p class="section-desc">
+          Browse our customer-favorite designs. Order ready-made or get it custom-stitched to your exact measurements.
+        </p>
+
+        <!-- Category Filter Pills (Simple & Clear) -->
+        <div class="filter-bar">
+          <button class="filter-pill active" data-category="all">All Outfits</button>
+          <button class="filter-pill" data-category="blouses">Bridal Blouses (Aari)</button>
+          <button class="filter-pill" data-category="sarees">Silk Sarees</button>
+          <button class="filter-pill" data-category="lehengas">Designer Lehengas</button>
+          <button class="filter-pill" data-category="anarkali">Anarkali & Kurtis</button>
+        </div>
+      </div>
+
+      <!-- Product Cards with Mouse Spotlight & 3D Tilt -->
+      <div class="product-grid" id="productGrid">
+        <!-- Injected dynamically by app.js with real Astah Boutique products -->
+      </div>
+    </section>
+
+    <!-- 7. CUSTOM STITCHING & TAILORING SERVICES SECTION -->
+    <section class="tailoring-section" id="tailoring">
+      <div class="tailoring-container">
+        <div class="section-header">
+          <span class="eyebrow">HOW TO ORDER CUSTOM STITCHING</span>
+          <h2 class="section-title">Custom Stitching Made Easy</h2>
+          <p class="section-desc">
+            Whether you are in Tiruppur, Chennai, Coimbatore, or living in the USA, getting your dream dress stitched is simple.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4>Pick Your Design</h4>
+            <p>Screenshot any design from our Instagram Reels or share a photo from Pinterest on our WhatsApp.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4>Share Measurements</h4>
+            <p>Visit our Dharapuram Road shop, or our master tailor guides you step-by-step over a WhatsApp video call.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4>Handcrafting & Stitching</h4>
+            <p>Our artisans do hand Aari embroidery and precision stitching with lining and double-lock seams.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h4>Doorstep Delivery</h4>
+            <p>We iron, pack, and courier directly to your doorstep anywhere in India or internationally.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20want%20to%20order%20custom%20stitching%20for%20my%20bridal%20blouse." target="_blank" class="btn btn-whatsapp magnetic" style="margin: 0 auto;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>BOOK STITCHING ON WHATSAPP (+91 90920 91676)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. VISIT SHOP / CONTACT SECTION (TIRUPPUR LOCATION) -->
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <div class="contact-card">
+          <div class="contact-info-side">
+            <span class="eyebrow">COME VISIT OUR STUDIO</span>
+            <h2 class="section-title" style="text-align: left; font-size: 2.2rem;">Astah Boutique Tiruppur</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              We welcome you to visit our shop, touch the fabrics, and discuss your bridal stitching with our designers in person.
+            </p>
+
+            <div class="contact-detail-list">
+              <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <div>
+                  <strong>Shop Address:</strong>
+                  <p>Thillai Nagar, Dharapuram Main Road, Perichipalayam, Tiruppur, Tamil Nadu 641604, India</p>
+                </div>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-icon">📞</span>
+                <div>
+                  <strong>Phone / WhatsApp:</strong>
+                  <p>+91 90920 91676</p>
+                </div>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-icon">📸</span>
+                <div>
+                  <strong>Official Instagram:</strong>
+                  <p><a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank" style="color: var(--accent-gold); font-weight: 700;">@astah_boutique_tirupur</a></p>
+                </div>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-icon">🕒</span>
+                <div>
+                  <strong>Opening Hours:</strong>
+                  <p>Monday to Saturday: 10:00 AM – 9:00 PM<br>Sunday: 11:00 AM – 8:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.8rem; display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20want%20to%20visit%20your%20shop%20in%20Tiruppur." target="_blank" class="btn btn-whatsapp magnetic">
+                <span>CHAT ON WHATSAPP</span>
+              </a>
+              <a href="tel:+919092091676" class="btn btn-secondary magnetic">
+                <span>CALL THE SHOP</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-image-side">
+            <img src="assets/images/boutique/studio-interior.jpg" alt="Astah Boutique Studio in Tiruppur">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. FOOTER WITH ACCESSIBLE, SIMPLE LINKS -->
+  <footer class="luxury-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="assets/astah-logo.png" alt="Astah Boutique Logo" style="height: 48px; width: auto;">
+            <div>
+              <span class="footer-logo">ASTAH BOUTIQUE</span>
+              <p class="footer-tagline" style="margin: 0;">Tiruppur, Tamil Nadu • 15 Years of Craft</p>
+            </div>
+          </div>
+          <p class="footer-copy">
+            Thillai Nagar, Dharapuram Main Road, Perichipalayam, Tiruppur, Tamil Nadu 641604, India.<br>
+            Specialists in Bridal Aari Work, Pure Silk Sarees, Designer Blouses & Tailoring.
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="col-title">QUICK LINKS</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Our 15-Year Story</a></li>
+            <li><a href="#reels">Trending Instagram Reels</a></li>
+            <li><a href="#collections">Shop Dresses & Sarees</a></li>
+            <li><a href="#tailoring">Custom Stitching Guide</a></li>
+            <li><a href="#contact">Visit Our Shop</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="col-title">CUSTOMER HELP</h4>
+          <ul>
+            <li><a href="https://wa.me/919092091676" target="_blank">WhatsApp: +91 90920 91676</a></li>
+            <li><a href="https://www.instagram.com/astah_boutique_tirupur" target="_blank">Instagram: @astah_boutique_tirupur</a></li>
+            <li><a href="#tailoring">How to Give Measurements</a></li>
+            <li><a href="#about">Delivery Across India & Worldwide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter-col">
+          <h4 class="col-title">GET OFFERS ON WHATSAPP</h4>
+          <p class="newsletter-desc">Enter your WhatsApp number to get photos of our latest bridal blouse designs and festival offers.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="tel" placeholder="Your WhatsApp Number (e.g. 9092091676)" required class="newsletter-input" id="newsletterPhone">
+            <button type="submit" class="newsletter-submit-btn magnetic">JOIN</button>
+          </form>
+          <span class="newsletter-feedback" id="newsletterMsg"></span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">© 2011 – 2026 ASTAH BOUTIQUE. ALL RIGHTS RESERVED. TIRUPPUR, TAMIL NADU.</p>
+        <div class="footer-legal">
+          <a href="#home">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 10. SLIDE-OVER SHOPPING CART DRAWER (MOBILE-OPTIMIZED) -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <div class="cart-header-title">
+        <h3>YOUR SHOPPING CART</h3>
+        <span class="cart-badge-counter" id="drawerCartCount">0 ITEMS</span>
+      </div>
+      <button class="cart-close-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <!-- Free Delivery Progress Bar -->
+    <div class="shipping-tier-card">
+      <div class="shipping-tier-info">
+        <span class="shipping-tier-msg" id="shippingTierMsg">Add ₹1,500 more for <strong>FREE Delivery Across India</strong></span>
+        <span class="shipping-percent" id="shippingPercent">0%</span>
+      </div>
+      <div class="tier-progress-track">
+        <div class="tier-progress-fill" id="tierProgressFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Item List -->
+    <div class="cart-items-wrap" id="cartItemsContainer">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="cart-footer" id="cartFooter">
+      <!-- Promo Code Box -->
+      <div class="promo-box">
+        <input type="text" placeholder="Offer Code (e.g. ASTAH10)" id="promoInput" class="promo-input">
+        <button class="promo-btn" id="applyPromoBtn">APPLY</button>
+      </div>
+      <div class="promo-applied-tag" id="promoTag" style="display: none;">
+        <span>Code ASTAH10 applied (10% Special Discount!)</span>
+        <button id="removePromoBtn">&times;</button>
+      </div>
+
+      <!-- Price Breakdown -->
+      <div class="cart-calculations">
+        <div class="calc-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">₹0</span>
+        </div>
+        <div class="calc-row" id="discountRow" style="display: none;">
+          <span>Discount (10%)</span>
+          <span class="discount-val" id="cartDiscount">-₹0</span>
+        </div>
+        <div class="calc-row">
+          <span>Delivery</span>
+          <span id="cartShipping">FREE Delivery Available</span>
+        </div>
+        <div class="calc-row total-row">
+          <span>Total Amount</span>
+          <span class="cart-total-price" id="cartTotal">₹0</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="checkout-actions">
+        <!-- Direct WhatsApp Order (Customer Favorite in India) -->
+        <button class="btn btn-whatsapp magnetic" id="whatsappCheckoutBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>ORDER ON WHATSAPP (+91 90920 91676)</span>
+        </button>
+
+        <!-- Instant Card Checkout Simulation -->
+        <button class="btn btn-primary magnetic" id="instantCheckoutBtn">
+          <span>PAY ONLINE / UPI / CARD</span>
+        </button>
+      </div>
+
+      <p class="cart-security-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>100% Safe Checkout • 15 Years of Trusted Service in Tiruppur</span>
+      </p>
+    </div>
+  </aside>
+
+  <!-- 11. PRODUCT QUICK-VIEW MODAL -->
+  <div class="modal-backdrop" id="quickViewModal">
+    <div class="quick-view-card">
+      <button class="modal-close-btn" id="closeQuickViewBtn">&times;</button>
+      <div class="modal-body" id="quickViewContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. SECURE ONLINE PAYMENT MODAL -->
+  <div class="modal-backdrop" id="checkoutModal">
+    <div class="checkout-card">
+      <button class="modal-close-btn" id="closeCheckoutBtn">&times;</button>
+      <div class="checkout-header">
+        <span class="logo-text">ASTAH BOUTIQUE</span>
+        <h3>QUICK CHECKOUT</h3>
+        <p class="checkout-subtitle">Enter your delivery address to place your order.</p>
+      </div>
+
+      <form class="checkout-form" id="checkoutForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>YOUR NAME</label>
+            <input type="text" placeholder="Priya Sundaram" required>
+          </div>
+          <div class="form-group">
+            <label>PHONE / WHATSAPP</label>
+            <input type="tel" placeholder="90920 91676" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>DELIVERY ADDRESS</label>
+          <input type="text" placeholder="Door No, Street Name, Area" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>CITY / DISTRICT</label>
+            <input type="text" placeholder="Tiruppur / Chennai / Coimbatore" required>
+          </div>
+          <div class="form-group">
+            <label>PINCODE</label>
+            <input type="text" placeholder="641604" required>
+          </div>
+        </div>
+
+        <div class="checkout-summary-box">
+          <div class="summary-line">
+            <span>Payable Total:</span>
+            <strong id="modalPayableAmount">₹0</strong>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary magnetic" style="width: 100%; margin-top: 1rem;">
+          <span>CONFIRM ORDER</span>
+        </button>
+      </form>
+
+      <!-- Success State -->
+      <div class="checkout-success-state" id="checkoutSuccessState" style="display: none;">
+        <div class="success-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#E2B874" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h3>ORDER PLACED SUCCESSFULLY!</h3>
+        <p class="success-desc">
+          Thank you! Order reference <strong>#ASTAH-892401</strong> has been received by our Tiruppur team. 
+          We will contact you on WhatsApp (+91 90920 91676) to confirm size and delivery details.
+        </p>
+        <button class="btn btn-secondary magnetic" id="returnShopBtn">CONTINUE SHOPPING</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. LIVE CUSTOMER PURCHASE NOTIFICATION -->
+  <div class="social-toast" id="socialToast">
+    <div class="toast-indicator"></div>
+    <div class="toast-img-wrap">
+      <img src="assets/images/collections/aari-work-blouse.jpg" alt="Customer Order" id="toastImg">
+    </div>
+    <div class="toast-details">
+      <p class="toast-action" id="toastMsg">Kavitha from Tiruppur just ordered</p>
+      <p class="toast-product" id="toastProduct">"Bridal Hand Aari Work Blouse"</p>
+      <span class="toast-time">3 minutes ago • Verified Customer</span>
+    </div>
+    <button class="toast-close" id="closeToastBtn">&times;</button>
+  </div>
+
+  <!-- 14. MOBILE BOTTOM FIXED ACTION BAR (THUMB ZONE ERGONOMICS) -->
+  <div class="mobile-bottom-bar">
+    <a href="#home" class="mobile-bar-item active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="#reels" class="mobile-bar-item highlight-reels">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+      <span>Reels</span>
+    </a>
+
+    <a href="#collections" class="mobile-bar-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+      <span>Dresses</span>
+    </a>
+
+    <a href="https://wa.me/919092091676?text=Hello%20Astah%20Boutique,%20I%20saw%20your%20Instagram%20Reels%20and%20want%20to%20order." target="_blank" class="mobile-bar-item highlight-whatsapp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+
+    <button class="mobile-bar-item" id="mobileCartBarBtn">
+      <div style="position: relative; display: inline-block;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="badge-dot" id="mobileBarCartCount">0</span>
+      </div>
+      <span>Cart</span>
+    </button>
+  </div>
+
+  <!-- JavaScript Application Bundle -->
+  <script src="js/app.js"></script>
 </body>
 </html>
