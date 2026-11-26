@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function startWebsite() {
     const imageReady = bgImg1
-      ? bgImg1.decode().catch(() => {})
+      ? bgImg1.decode().catch(() => { })
       : Promise.resolve();
 
     const fontsReady = document.fonts
@@ -181,15 +181,16 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set(fg3, { opacity: 0, y: 40, pointerEvents: "none" });
 
     /* ------------------------------------------
-       MASTER TIMELINE (Total Duration = 10 units)
+       MASTER TIMELINE (Total Duration = 10.0 units)
        Scrubbed across the height of trackWrapper
+       Balanced, dynamic documentary pacing
     ------------------------------------------ */
     const storyTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: trackWrapper,
         start: "top top",
         end: "bottom bottom",
-        scrub: 1,
+        scrub: 1.1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           updateSceneProgress(self.progress);
@@ -207,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     masterStoryScrollTrigger = storyTimeline.scrollTrigger;
 
     /* --------------------------------------------------
-       SCENE 1 (0% – 30% Scroll Progress, Time: 0.0 -> 3.0)
+       SCENE 1 (0% – 25% Scroll Progress, Time: 0.0 -> 2.8)
     -------------------------------------------------- */
     // Slow de-scale on tiger hero image from 1.06 to 1.0
     storyTimeline.to(
@@ -215,20 +216,20 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         scale: 1.0,
         ease: "none",
-        duration: 2.2,
+        duration: 2.0,
       },
-      0,
+      0
     );
 
-    // Active Plateau 1: Hold foreground 1 visible until time 2.0
-    // Exit Scene 1: time 2.2 -> 3.0
+    // Active Plateau 1: Hold foreground 1 visible until time 1.8
+    // Exit Scene 1: time 1.8 -> 2.8 (smooth 1.0s fade out)
     storyTimeline.to(
       fg1,
       {
         opacity: 0,
         y: -30,
-        ease: "power2.in",
-        duration: 0.8,
+        ease: "power1.inOut",
+        duration: 1.0,
         onComplete: () => {
           fg1.style.pointerEvents = "none";
         },
@@ -236,31 +237,32 @@ document.addEventListener("DOMContentLoaded", () => {
           fg1.style.pointerEvents = "auto";
         },
       },
-      2.2,
+      1.8
     );
 
     storyTimeline.to(
       bg1,
       {
         opacity: 0,
-        ease: "none",
-        duration: 0.8,
+        ease: "power1.inOut",
+        duration: 1.0,
       },
-      2.2,
+      1.8
     );
 
     /* --------------------------------------------------
-       SCENE 2 (30% – 65% Scroll Progress, Time: 3.0 -> 6.5)
+       SCENE 2 (25% – 60% Scroll Progress, Time: 1.8 -> 6.3)
+       Crisp, balanced reading hold without lingering
     -------------------------------------------------- */
-    // Enter Scene 2 Background: time 2.2 -> 3.2
+    // Enter Scene 2 Background: time 1.8 -> 2.9
     storyTimeline.to(
       bg2,
       {
         opacity: 1,
         ease: "none",
-        duration: 1.0,
+        duration: 1.1,
       },
-      2.2,
+      1.8
     );
 
     storyTimeline.to(
@@ -268,19 +270,19 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         scale: 1.0,
         ease: "none",
-        duration: 1.5,
+        duration: 1.6,
       },
-      2.2,
+      1.8
     );
 
-    // Enter Scene 2 Foreground: time 2.4 -> 3.4
+    // Enter Scene 2 Foreground: time 2.0 -> 3.1
     storyTimeline.to(
       fg2,
       {
         opacity: 1,
         y: 0,
         ease: "power2.out",
-        duration: 1.0,
+        duration: 1.1,
         onStart: () => {
           fg2.style.pointerEvents = "auto";
         },
@@ -288,18 +290,21 @@ document.addEventListener("DOMContentLoaded", () => {
           fg2.style.pointerEvents = "none";
         },
       },
-      2.4,
+      2.0
     );
 
-    // Active Plateau 2: Hold Scene 2 visible from time 3.4 to 5.4!
-    // Exit Scene 2: time 5.4 -> 6.4
+    // ACTIVE PLATEAU 2: BALANCED READING HOLD
+    // Holds steady from time 3.1 to 5.2 (2.1 units - comfortable, does not linger)
+
+    // TRANSITION SCENE 2 -> SCENE 3 (SMOOTH & MEASURED CROSSFADE)
+    // Exit Scene 2: time 5.2 -> 6.3 (duration 1.1s, smooth power1.inOut)
     storyTimeline.to(
       fg2,
       {
         opacity: 0,
-        y: -30,
-        ease: "power2.in",
-        duration: 0.8,
+        y: -25,
+        ease: "power1.inOut",
+        duration: 1.1,
         onComplete: () => {
           fg2.style.pointerEvents = "none";
         },
@@ -307,31 +312,31 @@ document.addEventListener("DOMContentLoaded", () => {
           fg2.style.pointerEvents = "auto";
         },
       },
-      5.4,
+      5.2
     );
 
     storyTimeline.to(
       bg2,
       {
         opacity: 0,
-        ease: "none",
-        duration: 0.8,
+        ease: "power1.inOut",
+        duration: 1.1,
       },
-      5.4,
+      5.2
     );
 
     /* --------------------------------------------------
-       SCENE 3 (65% – 95% Scroll Progress, Time: 6.5 -> 9.5)
+       SCENE 3 (60% – 100% Scroll Progress, Time: 5.2 -> 9.8)
     -------------------------------------------------- */
-    // Enter Scene 3 Background: time 5.4 -> 6.4
+    // Enter Scene 3 Background: time 5.2 -> 6.4 (duration 1.2s)
     storyTimeline.to(
       bg3,
       {
         opacity: 1,
         ease: "none",
-        duration: 1.0,
+        duration: 1.2,
       },
-      5.4,
+      5.2
     );
 
     storyTimeline.to(
@@ -339,19 +344,19 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         scale: 1.0,
         ease: "none",
-        duration: 1.5,
+        duration: 1.6,
       },
-      5.4,
+      5.2
     );
 
-    // Enter Scene 3 Foreground: time 5.6 -> 6.6
+    // Enter Scene 3 Foreground: time 5.4 -> 6.6 (duration 1.2s)
     storyTimeline.to(
       fg3,
       {
         opacity: 1,
         y: 0,
         ease: "power2.out",
-        duration: 1.0,
+        duration: 1.2,
         onStart: () => {
           fg3.style.pointerEvents = "auto";
         },
@@ -359,21 +364,27 @@ document.addEventListener("DOMContentLoaded", () => {
           fg3.style.pointerEvents = "none";
         },
       },
-      5.6,
+      5.4
     );
 
-    // Active Plateau 3: Hold Scene 3 visible from time 6.6 to 8.8!
-    // Exit Scene 3 / Transition to Scene 4 (95% - 100%):
-    // The sticky stage reaches its bottom boundary and cleanly scrolls up into #expeditions
+    // ACTIVE PLATEAU 3: Hold Scene 3 steady from time 6.6 to 8.6!
+    // Exit Scene 3 / Clean Hand-off into #expeditions:
+    // time 8.6 -> 9.8 (duration 1.2s):
     storyTimeline.to(
       fg3,
       {
-        opacity: 0.5,
-        y: -15,
-        ease: "power1.in",
-        duration: 1.0,
+        opacity: 0,
+        y: -30,
+        ease: "power2.in",
+        duration: 1.2,
+        onComplete: () => {
+          fg3.style.pointerEvents = "none";
+        },
+        onReverseComplete: () => {
+          fg3.style.pointerEvents = "auto";
+        },
       },
-      8.8,
+      8.6
     );
 
     ScrollTrigger.refresh();
@@ -384,9 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
   ------------------------------------------ */
   function updateSceneProgress(progress) {
     let currentScene = 1;
-    if (progress >= 0.30 && progress < 0.65) {
+    if (progress >= 0.25 && progress < 0.60) {
       currentScene = 2;
-    } else if (progress >= 0.65) {
+    } else if (progress >= 0.60) {
       currentScene = 3;
     }
 
@@ -398,6 +409,11 @@ document.addEventListener("DOMContentLoaded", () => {
         pill.classList.remove("active");
       }
     });
+
+    const sceneCounter = document.querySelector("#scene-counter-display");
+    if (sceneCounter) {
+      sceneCounter.textContent = `0${currentScene} / 03`;
+    }
   }
 
   // Clickable pills to jump to corresponding scene
@@ -410,9 +426,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let targetScroll = trackTop;
       if (sceneIndex === 2) {
-        targetScroll = trackTop + trackHeight * 0.45;
+        targetScroll = trackTop + trackHeight * 0.42;
       } else if (sceneIndex === 3) {
-        targetScroll = trackTop + trackHeight * 0.80;
+        targetScroll = trackTop + trackHeight * 0.76;
       }
 
       window.scrollTo({
@@ -493,119 +509,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ------------------------------------------
-       CINEMATIC APERTURE PORTAL TRANSITION
-       Smooth scrubbed zoom & optical iris expansion
-       connecting Expeditions to Gallery
-    ------------------------------------------ */
-    const aperturePortal = document.querySelector("#aperture-portal");
-    const apertureMask = document.querySelector("#aperture-mask");
-    const apertureImg = document.querySelector(".aperture-media-img");
-    const hudOverlay = document.querySelector(".hud-narrative-overlay");
-    const hudCrosshair = document.querySelector(".hud-crosshair");
-    const hudBrackets = document.querySelectorAll(".hud-bracket");
-
-    if (aperturePortal && apertureMask && apertureImg) {
-      const apertureTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: aperturePortal,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      });
-
-      // Expand lens mask from centered optical viewfinder frame to 100% full bleed
-      apertureTimeline.to(
-        apertureMask,
-        {
-          clipPath: "inset(0% 0% 0% 0% round 0px)",
-          borderColor: "rgba(197, 166, 106, 0.0)",
-          boxShadow: "0 0 0px rgba(0, 0, 0, 0)",
-          ease: "none",
-          duration: 3,
-        },
-        0
-      );
-
-      // De-scale and increase clarity of the optical image
-      apertureTimeline.to(
-        apertureImg,
-        {
-          scale: 1.0,
-          filter: "brightness(0.95) contrast(1.05)",
-          ease: "none",
-          duration: 3,
-        },
-        0
-      );
-
-      // Fade out narrative overlay as viewport expands
-      if (hudOverlay) {
-        apertureTimeline.to(
-          hudOverlay,
-          {
-            opacity: 0,
-            y: -50,
-            scale: 0.95,
-            ease: "power2.in",
-            duration: 1.2,
-          },
-          1.0
-        );
-      }
-
-      // Optical crosshair locks and expands away
-      if (hudCrosshair) {
-        apertureTimeline.to(
-          hudCrosshair,
-          {
-            opacity: 0,
-            scale: 2.2,
-            ease: "power2.in",
-            duration: 1.2,
-          },
-          1.2
-        );
-      }
-
-      if (hudBrackets.length) {
-        apertureTimeline.to(
-          hudBrackets,
-          {
-            opacity: 0,
-            scale: 1.4,
-            ease: "power2.in",
-            duration: 1.2,
-          },
-          1.4
-        );
-      }
-    }
-
-    /* ------------------------------------------
-       GALLERY ITEMS STAGGERED REVEAL
+       GALLERY ITEMS STAGGERED REVEAL (89 ITEMS PERFORMANCE OPTIMIZED)
     ------------------------------------------ */
     const galleryItems = gsap.utils.toArray(".gallery-reveal");
 
     ScrollTrigger.batch(galleryItems, {
-      start: "top 88%",
+      start: "top 92%",
+      once: true,
       onEnter: (batch) => {
         gsap.to(batch, {
           autoAlpha: 1,
           y: 0,
           filter: "blur(0px)",
-          stagger: 0.08,
-          duration: 0.8,
+          stagger: 0.05,
+          duration: 0.6,
           ease: "power2.out",
-        });
-      },
-      onLeaveBack: (batch) => {
-        gsap.to(batch, {
-          autoAlpha: 0,
-          y: 40,
-          filter: "blur(8px)",
-          stagger: 0.04,
-          duration: 0.5,
+          overwrite: "auto",
         });
       },
     });
@@ -685,8 +604,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tabBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        tabBtns.forEach((b) => b.classList.remove("active"));
+        tabBtns.forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
         btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
 
         const filter = btn.dataset.filter;
 
@@ -715,67 +638,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initializeGallery() {
     const filterBtns = document.querySelectorAll(".gallery-filter-btn");
-    const items = document.querySelectorAll(".gallery-item");
+    const items = Array.from(document.querySelectorAll(".gallery-item"));
 
-    filterBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
+    if (filterBtns.length > 0) {
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
 
-        const filter = btn.dataset.galleryFilter;
+          const filter = btn.dataset.galleryFilter;
 
-        items.forEach((item) => {
-          const cat = item.dataset.category;
-          if (filter === "all" || cat === filter) {
-            item.style.display = "";
-            gsap.fromTo(item, { autoAlpha: 0, scale: 0.95 }, { autoAlpha: 1, scale: 1, duration: 0.4 });
-          } else {
-            item.style.display = "none";
-          }
+          items.forEach((item) => {
+            const cat = item.dataset.category;
+            if (filter === "all" || cat === filter) {
+              item.style.display = "";
+              gsap.fromTo(item, { autoAlpha: 0, scale: 0.95 }, { autoAlpha: 1, scale: 1, duration: 0.4 });
+            } else {
+              item.style.display = "none";
+            }
+          });
+
+          ScrollTrigger.refresh();
         });
-
-        ScrollTrigger.refresh();
       });
-    });
+    }
 
-    /* Lightbox Modal logic */
+    /* Lightbox Modal logic with full arrow & keyboard navigation */
     const modal = document.querySelector("#lightbox-modal");
     const closeBtn = document.querySelector("#lightbox-close");
+    const prevBtn = document.querySelector("#lightbox-prev");
+    const nextBtn = document.querySelector("#lightbox-next");
     const modalImg = document.querySelector("#lightbox-img");
     const modalTitle = document.querySelector("#lightbox-title");
     const modalTag = document.querySelector("#lightbox-tag");
     const modalSpecies = document.querySelector("#lightbox-species");
     const modalDesc = document.querySelector("#lightbox-desc");
-    const modalGear = document.querySelector("#lightbox-gear");
     const modalCta = document.querySelector("#lightbox-cta");
 
-    if (!modal) return;
+    if (!modal || items.length === 0) return;
 
-    items.forEach((item) => {
-      item.addEventListener("click", () => {
-        const img = item.querySelector("img");
-        const title = item.dataset.title;
-        const species = item.dataset.species;
-        const location = item.dataset.location;
-        const gear = item.dataset.gear;
-        const caption = item.dataset.caption;
-        const category = item.dataset.category;
+    let currentLightboxIndex = 0;
 
+    const showLightboxItem = (index) => {
+      currentLightboxIndex = (index + items.length) % items.length;
+      const item = items[currentLightboxIndex];
+      const img = item.querySelector("img");
+      const title = item.dataset.title || "";
+      const species = item.dataset.species || "";
+      const location = item.dataset.location || "";
+      const caption = item.dataset.caption || "";
+      const category = item.dataset.category || "wild";
+
+      if (modalImg && img) {
         modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        modalTitle.textContent = title;
-        modalTag.textContent = `${category.toUpperCase()} · ${location.toUpperCase()}`;
-        modalSpecies.textContent = species;
-        modalDesc.textContent = caption;
-        modalGear.textContent = gear;
-
+        modalImg.alt = img.alt || title;
+      }
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalTag) modalTag.textContent = `${category.toUpperCase()} · ${location.toUpperCase()}`;
+      if (modalSpecies) modalSpecies.textContent = species;
+      if (modalDesc) modalDesc.textContent = caption;
+      if (modalCta) {
         modalCta.href = `#booking`;
         modalCta.onclick = () => {
-          modal.classList.remove("is-active");
+          closeModal();
           const destInput = document.querySelector("#form-destination");
           if (destInput) destInput.value = location;
         };
+      }
+    };
 
+    items.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        showLightboxItem(index);
         modal.classList.add("is-active");
         document.body.style.overflow = "hidden";
       });
@@ -787,13 +721,31 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showLightboxItem(currentLightboxIndex - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        showLightboxItem(currentLightboxIndex + 1);
+      });
+    }
+
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("is-active")) {
+      if (!modal.classList.contains("is-active")) return;
+      if (e.key === "Escape") {
         closeModal();
+      } else if (e.key === "ArrowLeft") {
+        showLightboxItem(currentLightboxIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        showLightboxItem(currentLightboxIndex + 1);
       }
     });
   }
@@ -853,6 +805,8 @@ Looking forward to hearing from you!`;
     // Submit via Email
     if (btnEmail) {
       btnEmail.addEventListener("click", () => {
+        if (form && !form.reportValidity()) return;
+
         const name = document.querySelector("#form-name")?.value.trim() || "";
         const phone = document.querySelector("#form-phone")?.value.trim() || "";
         const email = document.querySelector("#form-email")?.value.trim() || "";
@@ -907,13 +861,34 @@ Looking forward to hearing from you!`;
         document.body.style.overflow = "";
       });
     });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileNav.classList.contains("is-open")) {
+        mobileNav.classList.remove("is-open");
+        navToggle.classList.remove("is-active");
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+    });
   }
 
   /* ==================================================
-     11. SMOOTH ANCHOR NAVIGATION & HOME RESET
+     11. SMOOTH ANCHOR NAVIGATION, SCROLL SPY & HOME RESET
   ================================================== */
 
   function initializeSmoothNavScroll() {
+    const navLinks = document.querySelectorAll(".nav-links .nav-link, .nav-links a");
+
+    const updateNavActive = (activeHref) => {
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === activeHref) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    };
+
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         const href = this.getAttribute("href");
@@ -921,35 +896,101 @@ Looking forward to hearing from you!`;
 
         e.preventDefault();
 
+        // Clicking Home or Our World
         if (href === "#home") {
           window.scrollTo({ top: 0, behavior: "smooth" });
-          if (history.pushState) history.pushState(null, null, " ");
+          if (history.replaceState) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+          }
+          if (fg1) gsap.to(fg1, { opacity: 1, y: 0, duration: 0.35, overwrite: "auto" });
+          if (bg1) gsap.to(bg1, { opacity: 1, duration: 0.35, overwrite: "auto" });
+          if (fg2) gsap.to(fg2, { opacity: 0, y: 40, duration: 0.35, overwrite: "auto" });
+          if (fg3) gsap.to(fg3, { opacity: 0, y: 40, duration: 0.35, overwrite: "auto" });
+          if (bg2) gsap.to(bg2, { opacity: 0, duration: 0.35, overwrite: "auto" });
+          if (bg3) gsap.to(bg3, { opacity: 0, duration: 0.35, overwrite: "auto" });
+          updateSceneProgress(0);
+          updateNavActive("#home");
           return;
         }
 
+        // Clicking The Philosophy
         if (href === "#world") {
           const trackTop = trackWrapper ? trackWrapper.offsetTop : 0;
           const trackHeight = trackWrapper ? (trackWrapper.offsetHeight - window.innerHeight) : 0;
-          window.scrollTo({ top: trackTop + trackHeight * 0.45, behavior: "smooth" });
-          if (history.pushState) history.pushState(null, null, "#world");
+          window.scrollTo({ top: trackTop + trackHeight * 0.42, behavior: "smooth" });
+          if (history.replaceState) history.replaceState(null, null, "#world");
+          updateNavActive("#home");
           return;
         }
 
+        // Other content sections
         const target = document.querySelector(href);
         if (target) {
-          const navOffset = 70;
-          const targetY = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+          const navOffset = 60;
+          const targetY = target.offsetTop - navOffset;
           window.scrollTo({ top: targetY, behavior: "smooth" });
-          if (history.pushState) history.pushState(null, null, href);
+          if (history.replaceState) history.replaceState(null, null, href);
+          if (href === "#reviews" || href === "#pillars" || href === "#policy") {
+            updateNavActive("#reviews");
+          } else {
+            updateNavActive(href);
+          }
         }
       });
     });
 
+    // Content sections for Scroll Spy
+    const spySections = [
+      { id: "#booking", el: document.querySelector("#booking") },
+      { id: "#policy", el: document.querySelector("#policy") },
+      { id: "#reviews", el: document.querySelector("#reviews") },
+      { id: "#pillars", el: document.querySelector("#pillars") },
+      { id: "#mentors", el: document.querySelector("#mentors") },
+      { id: "#gallery", el: document.querySelector("#gallery") },
+      { id: "#expeditions", el: document.querySelector("#expeditions") },
+    ];
+
     window.addEventListener("scroll", () => {
-      if (window.scrollY === 0) {
+      const scrollPos = window.scrollY;
+
+      // 1. At or near top (Home intro scene)
+      if (scrollPos <= 80) {
+        if (window.location.hash && history.replaceState) {
+          history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+        updateNavActive("#home");
         updateSceneProgress(0);
         if (fg1) gsap.set(fg1, { opacity: 1, y: 0, pointerEvents: "auto" });
         if (bg1) gsap.set(bg1, { opacity: 1 });
+        if (bg2) gsap.set(bg2, { opacity: 0 });
+        if (bg3) gsap.set(bg3, { opacity: 0 });
+        if (fg2) gsap.set(fg2, { opacity: 0, y: 40, pointerEvents: "none" });
+        if (fg3) gsap.set(fg3, { opacity: 0, y: 40, pointerEvents: "none" });
+        return;
+      }
+
+      // 2. Inside the Hero Pinned Track
+      const heroTrackEnd = trackWrapper
+        ? trackWrapper.offsetTop + trackWrapper.offsetHeight - window.innerHeight * 0.25
+        : 1000;
+      if (scrollPos < heroTrackEnd) {
+        updateNavActive("#home");
+        return;
+      }
+
+      // 3. Spy on sections below the hero (viewport-relative, zero offsetParent bugs)
+      for (const sec of spySections) {
+        if (sec.el) {
+          const rect = sec.el.getBoundingClientRect();
+          if (rect.top <= 160) {
+            if (sec.id === "#reviews" || sec.id === "#pillars" || sec.id === "#policy") {
+              updateNavActive("#reviews");
+            } else {
+              updateNavActive(sec.id);
+            }
+            break;
+          }
+        }
       }
     }, { passive: true });
   }
